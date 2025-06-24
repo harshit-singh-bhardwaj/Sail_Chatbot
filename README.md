@@ -81,11 +81,11 @@ sail_chatbot/
 ![User Login](images/image.png)
 
 ### 🤖 Chatbot Interface
-![Chatbot Interface](images/image copy.png)
-![Chatbot Interface](images/image copy 2.png)
+![Chatbot Interface](images/image_copy.png)
+![Chatbot Interface](images/image_copy_2.png)
 
 ### 📊 Admin Dashboard
-![Dashboard](images/image copy 3.png)
+![Dashboard](images/image_copy_3.png)
 
 ---
 
