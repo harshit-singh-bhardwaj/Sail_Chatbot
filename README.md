@@ -77,13 +77,6 @@ sail_chatbot/
 
 ## 📸 Screenshots
   
-<img width="323" alt="image" src="https://github.com/user-attachments/assets/2221b703-cce8-4513-95e4-394445f9f7de" />
-<img width="208" alt="image" src="https://github.com/user-attachments/assets/b5b0c484-3500-41d6-8d09-85ab282171a9" /> <img width="208" alt="image" src="https://github.com/user-attachments/assets/696e7983-0b50-419f-b258-64887f8522fd" />
-<img width="207" alt="image" src="https://github.com/user-attachments/assets/87acdd8d-1070-439c-8bbb-8d95d4a8f05f" /> <img width="208" alt="image" src="https://github.com/user-attachments/assets/0ee96586-4490-4546-a53e-d1683d926562" />
-
-
-
-
 
 ---
 
