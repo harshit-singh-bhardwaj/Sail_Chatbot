@@ -75,7 +75,7 @@ sail_chatbot/
 ---
 
 📸 Screenshots (Optional)
-  Add screenshots or a demo GIF here if you want to showcase the UI.
+  
 
 ---
 
