@@ -62,11 +62,13 @@ sail_chatbot/
    pip install -r requirements.txt
 
 4. **Add your OpenAI API key**
-   ```Open config.py and set your API key:
+   ```
+   Open config.py and set your API key:
      OPENAI_API_KEY = "your-api-key-here"
 
 5. **Run the app**
-   ```streamlit run app.py
+   ```
+   streamlit run app.py
    or (if Flask-based):
    python app.py
 
