@@ -43,7 +43,7 @@ sail_chatbot/
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # Project documentation
 └── .gitignore                  # Git ignore rules
-
+```
 ---
 
 ## 🧪 How to Run Locally
