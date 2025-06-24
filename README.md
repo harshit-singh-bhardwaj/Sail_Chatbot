@@ -53,10 +53,12 @@ sail_chatbot/
    cd Sail_Chatbot
 
 2. **Create and activate virtual environment**
+   ```
    python3 -m venv venv
    source venv/bin/activate     # On Windows: venv\Scripts\activate
 
 3. **Install dependencies**
+   ```
    pip install -r requirements.txt
 
 4. **Add your OpenAI API key**
