@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    
+    <!-- Font Awesome for eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+        }
+    
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+    
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+    
+        .header img {
+            margin-right: 0.75rem;
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+    
+        .logout-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+    
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+    
+        .container {
+            padding: 2rem;
+        }
+    
+        .table-responsive {
+            border-radius: 1px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: white;
+            border-radius: 1px;
+            overflow: hidden;
+        }
+    
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+    
+        th:first-child {
+            border-top-left-radius: 12px;
+        }
+    
+        th:last-child {
+            border-top-right-radius: 12px;
+        }
+    
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 12px;
+        }
+    
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 12px;
+        }
+    
+        th {
+            background-color: #003366;
+            color: white;
+        }
+    
+        tr:hover {
+            background-color: #f9fbfc;
+            transition: background-color 0.3s ease;
+        }
+    
+        .delete-button, .edit-button {
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+    
+        .delete-button {
+            background-color: #c0392b;
+        }
+    
+        .delete-button:hover {
+            background-color: #a93226;
+        }
+    
+        .edit-button {
+            background-color: #2980b9;
+        }
+    
+        .edit-button:hover {
+            background-color: #2471a3;
+        }
+
+        .navbar {
+            background-color: #003366;
+            padding: 0.1rem;
+            margin-bottom: 0.1rem;
+            max-width: 1250px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 12px;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #005599;
+        }
+
+        .mb-3 {
+            margin-top: 2rem;
+        }
+
+        /* Make dropdown menu always clearly visible */
+        .dropdown-menu {
+            background-color: #fff !important;
+            color: #000 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: none !important;
+        }
+
+        /* Style the dropdown items */
+        .dropdown-item {
+            color: #000 !important;
+            background-color: transparent !important;
+        }
+
+        /* Hover effect */
+        .dropdown-item:hover {
+            background-color: #005599 !important;
+            color: #fff !important;
+        }
+
+        /* Style the dropdown button */
+        #passwordRequestDropdown {
+            background-color: #003366 !important;
+            color: white !important;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1.5rem;
+            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        /* On hover */
+        #passwordRequestDropdown:hover {
+            background-color: #005599 !important;
+            color: white !important;
+        }
+    </style>       
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>
+            <img src="{{ url_for('static', filename='sail_logo.png') }}" alt="Logo">
+            Admin Dashboard
+        </h1>
+        <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+    </div>
+
+    <br>
+    <!-- Top Bar Navigation -->
+    <div class="navbar">
+        <a href="#" onclick="switchTab('usersTableDiv')">Users</a>
+        <a href="#" onclick="switchTab('accountRequestsTableDiv')">Account Request</a>
+        <div class="dropdown d-inline">
+            <button class="btn btn-light dropdown-toggle" type="button" id="passwordRequestDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              Password Request
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="passwordRequestDropdown">
+              <li><a class="dropdown-item" href="#" onclick="showPasswordTable('Pending')">Pending</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showPasswordTable('Approved')">Approved</a></li>
+              <li><a class="dropdown-item" href="#" onclick="showPasswordTable('Rejected')">Rejected</a></li>
+            </ul>
+        </div>          
+    </div>
+
+    <!-- Table Section -->
+    <div class="container">
+        <!-- USERS TABLE -->
+        <div id="usersTableDiv" class="table-responsive">
+            <h2>Users</h2>
+            <table id="usersTable" class="display">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user['id'] }}</td>
+                        <td>{{ user['email'] }}</td>
+                        <td>********</td>
+                        <td>
+                            <a href="{{ url_for('edit_user', user_id=user['id']) }}" class="edit-button">Edit</a>
+                            <a href="{{ url_for('delete_user', user_id=user['id']) }}" class="delete-button" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ACCOUNT REQUESTS TABLE -->
+        <div id="accountRequestsTableDiv" class="table-responsive d-none">
+            <h2>Account Requests</h2>
+            <table id="accountRequestsTable" class="display">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in account_requests %}
+                    <tr>
+                        <td>{{ request['id'] }}</td>
+                        <td>{{ request['email'] }}</td>
+                        <td>
+                            <form action="{{ url_for('approve_account', request_id=request['id']) }}" method="post" style="display:inline;">
+                                <button type="submit" class="edit-button">Approve</button>
+                            </form>
+                            <form action="{{ url_for('deny_account', request_id=request['id']) }}" method="post" style="display:inline;">
+                                <button type="submit" class="delete-button">Deny</button>
+                            </form>                            
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PASSWORD REQUESTS TABLE -->
+        <!-- PENDING -->
+        <div id="passwordPendingTableDiv" class="table-responsive d-none">
+            <h2>Pending Password Requests</h2>
+            <table id="passwordPendingTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Email</th>
+                        <th>Request Time</th>
+                        <th>Status</th>
+                        <th>New Password</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for req in pending_password_requests %}
+                    <tr>
+                        <td>{{ req[0] }}</td>
+                        <td>{{ req[1] }}</td>
+                        <td>{{ req[2] }}</td>
+                        <td>{{ req[3] }}</td>
+                        <td>
+                            <form action="{{ url_for('reset_password_from_admin', request_id=req[0]) }}" method="POST" style="display: flex; gap: 10px;">
+                                <input type="text" name="new_password" placeholder="Enter new password" required style="padding: 6px; width: 150px;">
+                                <button type="submit" class="edit-button">Reset</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ url_for('reject_password_request', request_id=req[0]) }}" method="POST">
+                                <button type="submit" class="delete-button">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+  
+        <!-- APPROVED -->
+        <div id="passwordApprovedTableDiv" class="table-responsive d-none">
+            <h2>Completed Password Requests</h2>
+            <table id="passwordApprovedTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Email</th>
+                        <th>Request Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for req in approved_password_requests %}
+                    <tr>
+                        <td>{{ req[0] }}</td>
+                        <td>{{ req[1] }}</td>
+                        <td>{{ req[2] }}</td>
+                        <td>{{ req[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+  
+        <!-- REJECTED -->
+        <div id="passwordRejectedTableDiv" class="table-responsive d-none">
+            <h2>Rejected Password Requests</h2>
+            <table id="passwordRejectedTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Email</th>
+                        <th>Request Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for req in rejected_password_requests %}
+                    <tr>
+                        <td>{{ req[0] }}</td>
+                        <td>{{ req[1] }}</td>
+                        <td>{{ req[2] }}</td>
+                        <td>{{ req[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#usersTable').DataTable();
+            $('#accountRequestsTable').DataTable();
+            $('#passwordPendingTable').DataTable();
+            $('#passwordApprovedTable').DataTable();
+            $('#passwordRejectedTable').DataTable();
+        });
+
+        function togglePassword(icon) {
+            const row = icon.closest('td');
+            const masked = row.querySelector('.masked-password');
+            const actual = row.querySelector('.actual-password');
+            const isHidden = actual.classList.contains('d-none');
+
+            if (isHidden) {
+                masked.classList.add('d-none');
+                actual.classList.remove('d-none');
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                masked.classList.remove('d-none');
+                actual.classList.add('d-none');
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function switchTab(tabId) {
+        const allTabs = ['usersTableDiv', 'accountRequestsTableDiv', 'passwordPendingTableDiv', 'passwordApprovedTableDiv', 'passwordRejectedTableDiv'];
+        allTabs.forEach(id => {
+            document.getElementById(id).classList.add('d-none');
+        });
+        document.getElementById(tabId).classList.remove('d-none');
+    }
+
+    function showPasswordTable(status) {
+        const allTabs = ['usersTableDiv', 'accountRequestsTableDiv', 'passwordPendingTableDiv', 'passwordApprovedTableDiv', 'passwordRejectedTableDiv'];
+        allTabs.forEach(id => {
+            document.getElementById(id).classList.add('d-none');
+        });
+
+        const tableIdMap = {
+            'Pending': 'passwordPendingTableDiv',
+            'Approved': 'passwordApprovedTableDiv',
+            'Rejected': 'passwordRejectedTableDiv'
+        };
+
+        const selectedId = tableIdMap[status];
+        if (selectedId) {
+            document.getElementById(selectedId).classList.remove('d-none');
+        }
+    }
+
+    </script>
+</body>
+</html>

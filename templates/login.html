@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - SAIL Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+
+        <!-- Success message -->
+        {% if request.args.get('success') %}
+        <div class="success-banner">
+            {{ request.args.get('success') }}
+        </div>
+        {% endif %}
+
+        <!-- Logo -->
+        <div class="logo-header">
+            <img src="{{ url_for('static', filename='sail_logo.png') }}" alt="SAIL Logo">
+        </div>
+
+        <h2>Login to SAIL Chatbot</h2>
+
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Enter Email" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <p class="forgot-password-link">
+            <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+        </p>
+
+        <p class="register-link">Don't have an account?
+            <a href="{{ url_for('register') }}">Register here</a>
+        </p>
+
+        <p>
+            <a href="{{ url_for('admin_login') }}">Login as Admin</a>
+        </p>
+    </div>
+</body>
+</html>

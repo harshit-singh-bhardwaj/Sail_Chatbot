@@ -1,0 +1,217 @@
+/* Common Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Chatbot Container */
+#chatbox {
+    width: 400px;
+    height: 500px;
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* Chat Header */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Messages */
+.message {
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #e6f7ff;
+    color: #007bff;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.user-message {
+    background-color: #d4edda;
+    color: #155724;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #007bff;
+    background-color: #f8f9fa;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.dropdown:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Footer */
+footer {
+    margin-top: 10px;
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+}
+
+/* ===== Login Page Styling ===== */
+.login-container {
+    width: 300px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.login-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.login-container .error {
+    color: red;
+    margin-top: 10px;
+}
+
+.logo-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.login-container {
+    background-color: white;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+.logo-header img {
+    height: 80px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.success-banner {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    margin-bottom: 30px; /* increase space BELOW message */
+    margin-top: -10px;   /* shift message UPWARD */
+    font-weight: bold;
+    text-align: center;
+}
+
+.reset-form input {
+    padding: 4px;
+    margin-right: 6px;
+}
+
+.reset-form button {
+    padding: 4px 10px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.completed-label {
+    color: green;
+    font-weight: bold;
+}
+
+.delete-button {
+    background-color: #f44336; /* Red color */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAIL Chatbot</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="chatbox" class="chatbox">
+        <div id="header">
+            <img src="{{ url_for('static', filename='sail_logo.png') }}" alt="SAIL Logo" class="logo">
+            SAIL Chatbot
+        </div>
+    </div>
+
+    <!-- Logout button container -->
+    <div style="position: absolute; top: 120px; right: 530px;">
+        <form action="/logout" method="GET">
+            <button type="submit" style="padding: 5px 12px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Logout
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const chatbox = document.getElementById("chatbox");
+
+        function addMessage(content, sender) {
+            const message = document.createElement("div");
+            message.classList.add("message", `${sender}-message`);
+            message.textContent = content;
+            chatbox.appendChild(message);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function addDropdown(options) {
+            const dropdown = document.createElement("select");
+            dropdown.classList.add("dropdown");
+            dropdown.innerHTML = `<option selected disabled>-- Select an Option --</option>`;
+            options.forEach(option => {
+                const opt = document.createElement("option");
+                opt.value = option;
+                opt.textContent = option;
+                dropdown.appendChild(opt);
+            });
+
+            dropdown.onchange = function () {
+                const selected = dropdown.value;
+                addMessage(selected, "user");
+                sendToBackend(selected);
+                dropdown.disabled = true;
+            };
+
+            chatbox.appendChild(dropdown);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function sendToBackend(message) {
+            fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.responses) {
+                    data.responses.forEach(response => {
+                        addMessage(response, "bot");
+                    });
+                } else if (data.response) {
+                    addMessage(data.response, "bot");
+                }
+                if (data.dropdown) {
+                    addDropdown(data.dropdown);
+                }
+            })
+            .catch(() => {
+                addMessage("Sorry, something went wrong!", "bot");
+            });
+        }
+
+        // Start conversation
+        window.onload = () => {
+            sendToBackend("Greeting");
+        };
+    </script>
+</body>
+</html>
