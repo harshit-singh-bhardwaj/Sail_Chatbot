@@ -28,20 +28,21 @@ A Generative AI-powered chatbot developed as a final-year project for **Steel Au
 
 ## 📁 Project Structure
 
+```plaintext
 sail_chatbot/
-├── app.py # Main app logic
-├── config.py # Configuration and API keys
-├── database.py # Database connection and queries
+├── app.py                      # Main app logic
+├── config.py                   # Configuration and API keys
+├── database.py                 # Database connection and queries
 ├── model/
-│ ├── chatbot_model.py # Custom response handler
-│ └── model.pkl # (Optional) Pickled model
-├── templates/ # HTML templates
-├── static/ # Static files (CSS, JS, images)
+│   ├── chatbot_model.py        # Custom response handler
+│   └── model.pkl               # (Optional) Pickled model
+├── templates/                  # HTML templates
+├── static/                     # Static files (CSS, JS, images)
 ├── data/
-│ └── sail_faq.csv # Organization-specific training data
-├── requirements.txt # Python dependencies
-├── README.md # Project documentation
-└── .gitignore # Git ignore rules
+│   └── sail_faq.csv            # Organization-specific training data
+├── requirements.txt            # Python dependencies
+├── README.md                   # Project documentation
+└── .gitignore                  # Git ignore rules
 
 ---
 
