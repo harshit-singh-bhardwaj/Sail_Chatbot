@@ -77,6 +77,7 @@ sail_chatbot/
 
 ## 📸 Screenshots
   
+<img width="323" alt="image" src="https://github.com/user-attachments/assets/2221b703-cce8-4513-95e4-394445f9f7de" />
 
 ---
 
