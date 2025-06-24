@@ -91,22 +91,22 @@ sail_chatbot/
 ### 📊 Create Account
 ![Create Account](images/image_copy_5.png)
 
-### 📊 Admin Login
+### 🔐 Admin Login
 ![Admin Login](images/image_copy_6.png)
 
 ### 📊 Admin Dashboard
 ![Dashboard](images/image_copy_7.png)
 
-### 📊 Account Request
+### 📝 Account Request
 ![Account Request](images/image_copy_8.png)
 
-### 📊 Pending Password Requests
+### ⏳ Pending Password Requests
 ![Pending Password Requests](images/image_copy_9.png)
 
-### 📊 Completed Password Requests
+### ✅ Completed Password Requests
 ![Completed Password Requests](images/image_copy_10.png)
 
-### 📊 Rejected Password Requests
+### ❌ Rejected Password Requests
 ![Rejected Password Requests](images/image_copy_11.png)
 
 ---
