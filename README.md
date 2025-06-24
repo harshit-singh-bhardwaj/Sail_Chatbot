@@ -112,11 +112,11 @@ sail_chatbot/
 ---
 
 ## 📜 License
-  This project was built for academic and internal demonstration purposes only.
-  All rights reserved © Harshit Singh Bhardwaj.
+  - This project was built for academic and internal demonstration purposes only.
+  - All rights reserved © Harshit Singh Bhardwaj.
 
 ---
 
 ## 🙌 Acknowledgements
-  OpenAI for their powerful language models
-  SAIL for the domain inspiration and context
+  - OpenAI for their powerful language models
+  - SAIL for the domain inspiration and context
