@@ -54,34 +54,38 @@ sail_chatbot/
    cd Sail_Chatbot
 
 2. **Create and activate virtual environment**
+   ```
    python3 -m venv venv
    source venv/bin/activate     # On Windows: venv\Scripts\activate
 
 3. **Install dependencies**
+   ```
    pip install -r requirements.txt
 
 4. **Add your OpenAI API key**
+   ```
    Open config.py and set your API key:
      OPENAI_API_KEY = "your-api-key-here"
 
 5. **Run the app**
+   ```
    streamlit run app.py
    or (if Flask-based):
    python app.py
 
 ---
 
-📸 Screenshots (Optional)
+## 📸 Screenshots
   
 
 ---
 
-📜 License
+## 📜 License
   This project was built for academic and internal demonstration purposes only.
   All rights reserved © Harshit Singh Bhardwaj.
 
 ---
 
-🙌 Acknowledgements
+## 🙌 Acknowledgements
   OpenAI for their powerful language models
   SAIL for the domain inspiration and context
