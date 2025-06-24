@@ -77,6 +77,15 @@ sail_chatbot/
 
 ## 📸 Screenshots
   
+### 🔐 User Login
+![User Login](images/image.png)
+
+### 🤖 Chatbot Interface
+![Chatbot Interface](images/image copy.png)
+![Chatbot Interface](images/image copy 2.png)
+
+### 📊 Admin Dashboard
+![Dashboard](images/image copy 3.png)
 
 ---
 
