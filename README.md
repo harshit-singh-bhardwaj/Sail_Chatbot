@@ -65,7 +65,7 @@ sail_chatbot/
 4. **Add your OpenAI API key**
    ```
    Open config.py and set your API key:
-     OPENAI_API_KEY = "your-api-key-here"
+     - OPENAI_API_KEY = "your-api-key-here"
 
 5. **Run the app**
    ```
