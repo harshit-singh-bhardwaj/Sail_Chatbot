@@ -1,0 +1,15 @@
+# Byte-compiled / cache files
+__pycache__/
+*.pyc
+
+# macOS system files
+.DS_Store
+
+# IDE/project settings
+.idea/
+*.iml
+
+# Databases and logs
+*.db
+*.log
+store.txt
